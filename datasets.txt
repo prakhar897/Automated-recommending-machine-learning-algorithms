@@ -1,0 +1,4 @@
+https://www.kaggle.com/gustavomodelli/forest-fires-in-brazil/downloads/forest-fires-in-brazil.zip/1
+https://www.kaggle.com/chirin/africa-economic-banking-and-systemic-crisis-data/downloads/africa-economic-banking-and-systemic-crisis-data.zip/1
+https://www.kaggle.com/residentmario/ramen-ratings
+https://www.kaggle.com/amolbhivarkar/knn-for-classification-using-scikit-learn/data
