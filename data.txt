@@ -1,0 +1,1 @@
+{"Africa.csv": "banking_crisis", "Breast_cancer.csv": "diagnosis", "Churn_Modelling.csv": "Exited", "diabetes.csv": "Outcome", "hcc.csv": "Class", "heart.csv": "target", "kag_risk_factors_cervical_cancer.csv": "STDs:AIDS", "Loan.csv": "loan", "titanic.csv": "Survived", "UniversalBank.csv": "CreditCard", "weatherAUS.csv": "RainToday"}
