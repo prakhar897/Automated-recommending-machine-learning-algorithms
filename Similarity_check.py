@@ -6,6 +6,9 @@ from collections import *
 import ntpath
 ntpath.basename("a/b/c")
 
+from hyperparameters import AHP_character_matrix,character
+from fuzzy_AHP import fuzzy_AHP
+
 def path_leaf(path):
     head, tail = ntpath.split(path)
     return tail or ntpath.basename(head)
@@ -34,14 +37,30 @@ class SimDataset:
 
 	def getMaxScore(self):
 
-		s = sum(self.columns[k][0] for k in self.columns.keys() if k!="dataset")
-		a = [self.columns[k][0]/s for k in self.columns.keys() if k!="dataset"]
+		weights_array = fuzzy_AHP(AHP_character_matrix)
+		weights = {}
+		for i in range(len(weights_array)):
+			weights[character[i]] = weights_array[i]	
+		#print(weights)
+
+		s=0
+		for k in self.columns.keys():
+			if k != "dataset":
+				s += self.columns[k][0]*weights[k]
+
+		a = [(self.columns[k][0]*weights[k])/s for k in self.columns.keys() if k!="dataset"]
 		scores = []
 
 		for i,rows in self.DF.iterrows():
+			
 			my_vec = [rows.attributes,rows.Instance_Count,rows.Numerical_Attributes,rows.Missing_Count]
-			x = sum(my_vec)
-			b = [i/s for i in my_vec]
+			#print(my_vec)
+
+			x=0
+			for k in range(len(my_vec)):
+				x += my_vec[k]*weights_array[k]
+			#x = sum(my_vec)
+			b = [(my_vec[i]*weights_array[i])/s for i in range(len(my_vec))]
 
 			euc_sim = norm(numpy.array(a)-numpy.array(b))
 			euc_sim = 1/(1+euc_sim)
