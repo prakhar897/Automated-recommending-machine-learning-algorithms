@@ -17,6 +17,10 @@ from collections import defaultdict
 import time
 import ntpath
 import json
+
+from hyperparameters import AHP_features_matrix
+from hyperparameters import features
+from fuzzy_AHP import fuzzy_AHP
 ntpath.basename("a/b/c")
 
 def path_leaf(path):
@@ -264,8 +268,11 @@ class Dataset:
 		self.runETC()
 
 	def calculateRank(self):
-		normperfMatrix = defaultdict(list)	
-		weights = {"Accuracy":0.15,"Cohen Kappa Score":0.4,"Precision-Score":0.1,"Recall-Score":0.08,"F-Score":0.25,"CPU-Training Time":0.014,"CPU-testing Time":0.006}
+		normperfMatrix = defaultdict(list)
+		weights_array = fuzzy_AHP(AHP_features_matrix)
+		weights = {}
+		for i in range(len(weights_array)):
+			weights[features[i]] = weights_array[i]	
 		for k in self.myColumns.keys():
 			if k!='Algorithm':
 				s = sum(i for i in self.myColumns[k])

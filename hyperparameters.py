@@ -1,0 +1,3 @@
+features = ["Accuracy","Cohen Kappa Score","Precision-Score","Recall-Score","F-Score","CPU-Training Time","CPU-testing Time"]
+weights = {"Accuracy":0.15,"Cohen Kappa Score":0.4,"Precision-Score":0.1,"Recall-Score":0.08,"F-Score":0.25,"CPU-Training Time":0.014,"CPU-testing Time":0.006}
+AHP_features_matrix = [[1,3,5,5,5,7,7],[0.33,1,2,2,2,6,6],[0.2,0.5,1,1,1,5,4],[0.2,0.5,1,1,1,5,4],[0.2,0.5,1,1,1,5,4],[0.142,0.166,0.2,0.2,0.2,1,1],[0.142,0.166,0.25,0.25,0.25,1,1]]
